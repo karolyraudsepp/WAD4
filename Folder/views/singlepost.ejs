@@ -3,7 +3,7 @@
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="/style.css">
+ <link href="/Folder/public/css/style.css" rel="stylesheet" type="text/css">
  <title>Single Post</title>
 </head>
 <body>
@@ -16,6 +16,9 @@
  <p>
  <%= posts.body %>
  </p>
+ </div>
+ <div>
+    <%= posts.likes %>
  </div>
  <a href="/posts" class="delete" data-del="<%= posts.id %>">Delete</a>
  </div>

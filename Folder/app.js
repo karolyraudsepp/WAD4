@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use(express.static('Public'));
+app.use('/public',express.static("public"));
 
 // register the ejs view engine
 app.set('view engine', 'ejs');
@@ -56,9 +56,9 @@ app.get('/singlepost/:id', async(req, res) => {
 } catch (err) {
     console.error(err.message);
     }
-   });
+});
 
-  app.delete('/posts/:id', async(req, res) => {
+app.delete('/posts/:id', async(req, res) => {
     try {
     console.log(req.params);
     const { id } = req.params;
@@ -71,7 +71,7 @@ app.get('/singlepost/:id', async(req, res) => {
     } catch (err) {
     console.error(err.message);
     }
-   });
+});
 
    app.post('/posts', async(req, res) => {
     try {
@@ -86,7 +86,17 @@ app.get('/singlepost/:id', async(req, res) => {
     }
    });
    
-
+app.post('/posts/:id', async(req, res) => {
+    try {
+        const postid = req.params.id;
+        console.log("Sending post/like request for " + postid);
+        await pool.query(
+            "UPDATE posts SET likes = likes + 1 WHERE id = $1",  [postid]
+        );
+    } catch (err) {
+        console.error(err.message)
+    }
+});
 
 app.get('/create', (req, res) => {
     //res.sendFile('./views/contactus.html', { root: __dirname });

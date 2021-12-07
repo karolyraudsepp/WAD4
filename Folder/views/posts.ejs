@@ -24,8 +24,25 @@
         <p class="body">
         <%= post.body %>
         </p>
-        <img src=<%= post.image %> alt="Girl in a jacket">
-
+        <img src="<%= post.image %>"" alt="Girl in a jacket">
+        </a>
+        <button class="likebutton-<%= post.id %>" onclick="this.disabled=true">Like</button>
+        <script>
+            document.querySelector('button.likebutton-<%- post.id %>')
+            .addEventListener('click', (e) => {
+                const postid = "<%- post.id %>" 
+                console.log("Sending post request from <%- post.id %>");
+                const endpoint = `/posts/<%- post.id %>`;
+                fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'sapplication/json'
+                    },
+                    body: JSON.stringify({id: postid})
+                }); 
+            });
+        </script>
         <% })} else { %>
             <p>You did not post anything...</p>
         <% } %>
@@ -33,6 +50,10 @@
     </div>
 </div>
 </div>   
+
+<script>
+
+</script>
 
         <%- include('partials/footer.ejs')%>
 </body>
