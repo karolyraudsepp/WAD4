@@ -1,31 +1,39 @@
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/public/assets/css/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts</title>
+
 </head>
 <body>
-    <h1>Posts</h1>
+    <div class= "header">
+        <h1>Posts</h1>
 
+    <%- include('./partials/header.ejs') %>
+</div>
+<div class= "posts">
     <div class="for_background">
-        <div class="profile">
-            <div class="container2">  
+    
     <% if (posts.length > 0) { %>
     <div class="posts list">
-        <h2>All posts</h2>
-        <% posts.forEach(post => { %>
+        <div class="profile">
+            <div class="container2">  
 
+        <% posts.forEach(post => { %>
         <a class="singlepost" href="/singlepost/<%= post.id %>">
         <h3 class="title">
         <%= post.title %>
         </h3>
+        <img src="<%= post.image %>"" alt="Girl in a jacket" style="width: 100%">
+        </a>
         <p class="body">
         <%= post.body %>
         </p>
-        <img src="<%= post.image %>"" alt="Girl in a jacket">
-        </a>
+        <div>
+            <%= posts.likes %>
+         </div>
         <button class="likebutton-<%= post.id %>" onclick="this.disabled=true">Like</button>
         <script>
             document.querySelector('button.likebutton-<%- post.id %>')
@@ -51,10 +59,8 @@
 </div>
 </div>   
 
-<script>
-
-</script>
-
+</div>
         <%- include('partials/footer.ejs')%>
+    
 </body>
 </html>

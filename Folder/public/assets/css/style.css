@@ -27,9 +27,39 @@
 .container2 {
   padding: 1px 16px;
   align-items: left;
+
 }
 
 body{
-	background-image: lightpink;
-    margin: 0;
+    background-image: url("/public/assets/proov1.jpg");
+    margin-bottom:  100;
+
+    } 
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 5px;
+  width: 100%;
+  background-color: lightpink;
+  color: white;
+  text-align: center;
+  font-size: 25px;
+}
+
+.header {
+	background-color: lightpink;
+	text-align: center;
+	padding: 20px;
+	font-size: 20px;
+	color: white;
+}
+
+.create-post {
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
 }
