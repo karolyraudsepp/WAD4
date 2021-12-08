@@ -83,6 +83,7 @@ app.post('/posts/:id', async(req, res) => {
         await pool.query(
             "UPDATE posts SET likes = likes + 1 WHERE id = $1",  [postid]
         );
+        window.location.reload();
     } catch (err) {
         console.error(err.message)
     }
